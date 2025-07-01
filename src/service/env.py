@@ -31,6 +31,7 @@ USR_AGENT = eval(os.getenv("USR_AGENT", "True"))
 MCP_AGENT = eval(os.getenv("MCP_AGENT", "False"))
 USE_MCP_TOOLS = eval(os.getenv("USE_MCP_TOOLS", "True"))
 USE_BROWSER = eval(os.getenv("USE_BROWSER", "False"))
+USE_VL = eval(os.getenv("USE_VL", "False"))  # 控制是否启用视觉语言模型
 DEBUG = eval(os.getenv("DEBUG", "False"))
 BROWSER_BACKEND = os.getenv("BROWSER_BACKEND")
 MAX_STEPS = eval(os.getenv("MAX_STEPS", "25"))

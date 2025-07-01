@@ -15,6 +15,7 @@ from src.service.env import (
     CODE_MODEL,
     CODE_BASE_URL,
     CODE_API_KEY,
+    USE_VL,  # 添加视觉模型开关
 )
 from src.llm.agents import LLMType
 
@@ -108,7 +109,8 @@ def get_llm_by_type(llm_type: LLMType) -> ChatOpenAI | ChatDeepSeek:
 # Initialize LLMs for different purposes - now these will be cached
 reasoning_llm = get_llm_by_type("reasoning")
 basic_llm = get_llm_by_type("basic")
-vl_llm = get_llm_by_type("vision")
+# 只有启用视觉模型时才初始化
+vl_llm = get_llm_by_type("vision") if USE_VL else None
 
 
 if __name__ == "__main__":
@@ -119,4 +121,6 @@ if __name__ == "__main__":
     print(full_response)
 
     basic_llm.invoke("Hello")
-    vl_llm.invoke("Hello")
+    # 只有启用视觉模型时才测试
+    if USE_VL and vl_llm:
+        vl_llm.invoke("Hello")
